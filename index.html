@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مزار شهدای گمنام گاوازنگ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ====== تمام استایل‌های CSS اینجا ====== */
+        *{margin:0;padding:0;box-sizing:border-box}
+        html{scroll-behavior:smooth}
+        :root{--gold:#f5d77a;--gold-dark:#b99532;--dark:#02140f;--dark-light:#06251b}
+        body{font-family:'Vazirmatn',Tahoma,sans-serif;background:linear-gradient(180deg,#02140f,#06251b,#03100c);color:white;overflow-x:hidden;min-height:100vh}
+        body::before{content:"";position:fixed;inset:0;background-image:radial-gradient(circle,rgba(212,175,55,.15)1px,transparent 1px);background-size:40px 40px;opacity:.4;z-index:-1;pointer-events:none}
+        ::selection{background:var(--gold);color:#111}
+        ::-webkit-scrollbar{width:10px}
+        ::-webkit-scrollbar-track{background:var(--dark)}
+        ::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold-dark),var(--gold));border-radius:20px}
+        .loader{position:fixed;inset:0;background:var(--dark);display:flex;align-items:center;justify-content:center;z-index:9999;transition:.8s}
+        .loader-logo{font-size:70px;animation:pulse 2s infinite}
+        .loader.hide{opacity:0;visibility:hidden;pointer-events:none}
+        header{position:fixed;top:0;right:0;left:0;padding:18px 30px;background:rgba(0,0,0,.35);backdrop-filter:blur(15px);border-bottom:1px solid rgba(255,255,255,.15);z-index:1000;transition:.4s}
+        header.scrolled{background:rgba(0,0,0,.85);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+        .nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+        .logo{display:flex;align-items:center;gap:12px;font-size:30px;color:var(--gold)}
+        .logo span:last-child{font-size:18px;font-weight:900}
+        nav{display:flex;gap:25px}
+        nav a{color:#fff;text-decoration:none;font-weight:600;transition:.3s;position:relative}
+        nav a::after{content:'';position:absolute;bottom:-4px;right:0;width:0;height:2px;background:var(--gold);transition:.3s}
+        nav a:hover::after{width:100%}
+        nav a:hover{color:var(--gold)}
+        .mobile-menu-btn{display:none;width:50px;height:50px;border-radius:50%;background:var(--gold);color:#111;font-size:28px;font-weight:900;align-items:center;justify-content:center;cursor:pointer;transition:.3s;border:none}
+        .mobile-menu-btn:hover{transform:scale(1.05)}
+        .mobile-menu{display:none;position:fixed;top:0;right:0;width:280px;height:100vh;background:rgba(2,20,15,.97);backdrop-filter:blur(20px);z-index:1500;padding:100px 30px 30px;box-shadow:-10px 0 40px rgba(0,0,0,.5);transform:translateX(100%);transition:transform .4s ease}
+        .mobile-menu.active{transform:translateX(0);display:block}
+        .mobile-menu a{display:block;padding:18px 0;color:white;text-decoration:none;font-size:20px;border-bottom:1px solid rgba(255,255,255,.1);transition:.3s}
+        .mobile-menu a:hover{color:var(--gold);padding-right:10px}
+        .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:120px 20px 50px;position:relative}
+        .hero::before{content:"";position:absolute;inset:0;background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.85)),url("images/mazar-bg.jpg");background-size:cover;background-position:center;z-index:-1;animation:zoom 20s infinite alternate}
+        .hero-box{max-width:900px;text-align:center;padding:60px 40px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:40px;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden}
+        .hero-box::after{content:"";position:absolute;width:250px;height:250px;background:radial-gradient(circle,rgba(245,215,122,.25),transparent 70%);top:-80px;left:-80px;border-radius:50%;animation:pulse 4s infinite}
+        .light{width:150px;height:150px;margin:auto;background:radial-gradient(circle,var(--gold),transparent 70%);filter:blur(20px)}
+        .hero h1{margin-top:20px;font-size:65px;font-weight:900;color:var(--gold);line-height:1.4;text-shadow:0 0 20px rgba(245,215,122,.25)}
+        .hero h1 span{display:block;color:white}
+        .hero p{font-size:22px;line-height:2;margin-top:25px;color:#eee}
+        .hero-buttons{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:35px}
+        .btn{display:inline-block;padding:15px 50px;border-radius:50px;background:linear-gradient(45deg,var(--gold-dark),var(--gold));color:#111;font-weight:900;text-decoration:none;transition:.3s;border:none;cursor:pointer}
+        .btn:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(245,215,122,.3)}
+        .btn-outline{background:transparent;color:white;border:2px solid rgba(255,255,255,.3)}
+        .btn-outline:hover{background:rgba(255,255,255,.1);border-color:var(--gold)}
+        .section{padding:100px 20px;max-width:1200px;margin:auto;text-align:center}
+        .section h2{font-size:40px;color:var(--gold);margin-bottom:30px;text-shadow:0 0 20px rgba(245,215,122,.25)}
+        .section p{font-size:20px;line-height:2;color:#ddd}
+        .gold-line{width:120px;height:4px;margin:20px auto;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+        .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:25px;margin-top:40px}
+        .card{overflow:hidden;border-radius:25px;height:280px;border:1px solid rgba(255,255,255,.2);position:relative}
+        .card::before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.6));opacity:0;transition:.4s;z-index:1}
+        .card:hover::before{opacity:1}
+        .card img{width:100%;height:100%;object-fit:cover;transition:.5s}
+        .card:hover img{transform:scale(1.1)}
+        .programs{background:rgba(255,255,255,.06);border-radius:40px;padding:80px 20px}
+        .program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:25px;margin-top:45px}
+        .program-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:30px;padding:35px 25px;backdrop-filter:blur(15px);transition:.5s}
+        .program-card:hover{transform:translateY(-12px);border-color:var(--gold);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+        .program-card .icon{font-size:45px;margin-bottom:20px}
+        .program-card h3{font-size:25px;color:var(--gold);margin-bottom:15px}
+        .program-card p{font-size:16px;line-height:2;color:#ddd}
+        .timeline{max-width:1100px;margin:100px auto;padding:50px 20px;text-align:center}
+        .timeline h2{font-size:40px;color:var(--gold);margin-bottom:50px;font-weight:900}
+        .timeline-box{position:relative;display:flex;flex-direction:column;gap:30px}
+        .timeline-box::before{content:"";position:absolute;right:50%;top:0;bottom:0;width:3px;background:linear-gradient(var(--gold),transparent);transform:translateX(50%)}
+        .event{display:flex;align-items:center;justify-content:center;gap:30px;position:relative}
+        .date{width:120px;height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:#111;font-weight:900;border-radius:50%;box-shadow:0 10px 30px rgba(0,0,0,.4);flex-shrink:0}
+        .event-text{width:350px;text-align:right;padding:25px;background:rgba(255,255,255,.07);border-radius:25px;border:1px solid rgba(255,255,255,.15)}
+        .event-text h3{color:var(--gold);font-size:23px;margin-bottom:10px}
+        .event-text p{color:#ddd;line-height:2}
+        .features{max-width:1200px;margin:100px auto;padding:50px 20px;text-align:center}
+        .features h2{font-size:42px;color:var(--gold);font-weight:900}
+        .features>p{margin-top:15px;font-size:18px;color:#ddd}
+        .feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:25px;margin-top:50px}
+        .feature-item{padding:35px 25px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.15);border-radius:30px;transition:.4s}
+        .feature-item:hover{transform:translateY(-10px);background:rgba(245,215,122,.1)}
+        .feature-icon{font-size:45px;margin-bottom:20px}
+        .feature-item h3{font-size:24px;color:var(--gold);margin-bottom:15px}
+        .feature-item p{line-height:2;color:#ddd;font-size:16px}
+        .download-app{max-width:1100px;margin:120px auto;padding:20px}
+        .download-container{text-align:center;padding:60px 35px;background:linear-gradient(135deg,rgba(245,215,122,.15),rgba(255,255,255,.05));border-radius:45px;border:1px solid rgba(245,215,122,.3);box-shadow:0 30px 80px rgba(0,0,0,.5)}
+        .app-logo{width:100px;height:100px;margin:auto;display:flex;align-items:center;justify-content:center;font-size:55px;border-radius:50%;background:linear-gradient(135deg,var(--gold-dark),var(--gold));box-shadow:0 0 50px rgba(245,215,122,.5)}
+        .download-container h2{margin-top:30px;font-size:42px;color:var(--gold);font-weight:900}
+        .download-container p{margin-top:20px;font-size:20px;line-height:2;color:#eee}
+        .app-info{display:flex;justify-content:center;gap:25px;flex-wrap:wrap;margin-top:40px}
+        .app-info div{min-width:160px;padding:25px;background:rgba(255,255,255,.08);border-radius:25px;border:1px solid rgba(255,255,255,.15)}
+        .app-info strong{display:block;color:var(--gold);font-size:18px;margin-bottom:10px}
+        .app-info span{color:white}
+        .apk-button{margin-top:40px;padding:18px 60px;border:none;border-radius:50px;background:linear-gradient(45deg,var(--gold-dark),var(--gold));color:#111;font-weight:900;font-size:18px;transition:.3s;cursor:pointer}
+        .apk-button:hover{transform:translateY(-8px);box-shadow:0 15px 40px rgba(245,215,122,.4)}
+        .stats{max-width:1200px;margin:100px auto;padding:20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px}
+        .stat-box{text-align:center;padding:35px;background:rgba(255,255,255,.07);border-radius:30px;border:1px solid rgba(255,255,255,.15);transition:.4s}
+        .stat-box:hover{transform:scale(1.05)}
+        .stat-box h3{font-size:45px;color:var(--gold)}
+        .stat-box p{margin-top:15px;color:#ddd;font-size:18px}
+        .library{max-width:1200px;margin:100px auto;padding:50px 20px;text-align:center}
+        .library h2{font-size:42px;color:var(--gold);font-weight:900}
+        .library>p{margin-top:15px;color:#ddd;font-size:18px}
+        .library-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:50px}
+        .book-card{padding:35px 25px;background:rgba(255,255,255,.07);border-radius:35px;border:1px solid rgba(255,255,255,.15);transition:.4s}
+        .book-card:hover{transform:translateY(-12px);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+        .book-icon{font-size:50px;margin-bottom:20px}
+        .book-card h3{font-size:25px;color:var(--gold);margin-bottom:15px}
+        .book-card p{color:#ddd;line-height:2}
+        .book-link{display:inline-block;margin-top:25px;padding:12px 35px;border-radius:50px;background:var(--gold);color:#111;font-weight:900;text-decoration:none;transition:.3s}
+        .book-link:hover{transform:translateY(-3px);box-shadow:0 5px 20px rgba(245,215,122,.3)}
+        .audio-section{max-width:1200px;margin:100px auto;padding:50px 20px;text-align:center}
+        .audio-section h2{font-size:42px;color:var(--gold);font-weight:900;margin-bottom:15px}
+        .audio-section>p{color:#ddd;font-size:18px}
+        .audio-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:30px;margin-top:45px}
+        .audio-card{padding:35px 25px;background:rgba(255,255,255,.07);border-radius:35px;border:1px solid rgba(255,255,255,.15);transition:.4s}
+        .audio-card:hover{transform:translateY(-10px);box-shadow:0 20px 50px rgba(0,0,0,.5)}
+        .audio-icon{font-size:50px;margin-bottom:20px}
+        .audio-card h3{color:var(--gold);font-size:25px;margin-bottom:25px}
+        .audio-card audio{width:100%;filter:sepia(30%);border-radius:10px}
+        .letter-section{max-width:900px;margin:100px auto;padding:50px 20px;text-align:center}
+        .letter-section h2{font-size:42px;color:var(--gold);font-weight:900;margin-bottom:40px}
+        .letter-box{padding:40px;background:rgba(255,255,255,.07);border-radius:40px;border:1px solid rgba(255,255,255,.15)}
+        .letter-box textarea{width:100%;height:180px;resize:vertical;padding:25px;border-radius:25px;border:none;outline:none;background:rgba(0,0,0,.35);color:white;font-family:'Vazirmatn',sans-serif;font-size:17px;transition:.3s}
+        .letter-box textarea:focus{border:2px solid var(--gold)}
+        .letter-box textarea::placeholder{color:#aaa}
+        .letter-box button{margin-top:25px;padding:15px 50px;border:none;border-radius:50px;background:linear-gradient(45deg,var(--gold-dark),var(--gold));font-weight:900;font-size:18px;cursor:pointer;transition:.3s}
+        .letter-box button:hover{transform:translateY(-5px)}
+        .letter-status{margin-top:15px;font-size:16px;color:var(--gold);min-height:30px}
+        .contact{max-width:1000px;margin:100px auto;padding:40px;text-align:center;background:rgba(255,255,255,.05);border-radius:35px}
+        .contact h2{color:var(--gold);font-size:38px;margin-bottom:25px}
+        .contact p{color:#ddd}
+        .contact-info{display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin:30px 0}
+        .contact-info div{padding:15px 25px;background:rgba(255,255,255,.06);border-radius:15px;border:1px solid rgba(255,255,255,.1)}
+        .contact-btn{display:inline-block;margin-top:10px;padding:15px 40px;border-radius:50px;background:var(--gold);color:#111;text-decoration:none;font-weight:900;transition:.3s}
+        .contact-btn:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(245,215,122,.3)}
+        footer{margin-top:80px;padding:60px 20px 20px;background:linear-gradient(180deg,#02140f,#010806);border-top:1px solid rgba(245,215,122,.25)}
+        .footer-container{max-width:1200px;margin:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px}
+        .footer-logo{text-align:center}
+        .footer-icon{font-size:60px;margin-bottom:20px}
+        .footer-logo h2{color:var(--gold);font-size:30px;font-weight:900}
+        .footer-logo p{color:#ddd;margin-top:15px}
+        .footer-links,.footer-contact{display:flex;flex-direction:column;gap:15px}
+        .footer-links h3,.footer-contact h3{color:var(--gold);font-size:23px;margin-bottom:15px}
+        .footer-links a{color:#ddd;text-decoration:none;transition:.3s}
+        .footer-links a:hover{color:var(--gold);padding-right:10px}
+        .footer-contact p{color:#ddd;line-height:2}
+        .footer-bottom{max-width:1200px;margin:50px auto 0;padding-top:25px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;text-align:center}
+        .footer-bottom p{color:#aaa}
+        #scrollTop{position:fixed;bottom:30px;right:30px;width:55px;height:55px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--gold-dark),var(--gold));color:#111;font-size:30px;font-weight:900;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(30px);transition:.4s;z-index:2000;box-shadow:0 5px 20px rgba(245,215,122,.3)}
+        #scrollTop.show{opacity:1;visibility:visible;transform:translateY(0)}
+        #scrollTop:hover{transform:translateY(-8px)}
+        @keyframes pulse{0%{transform:scale(1);opacity:.4}50%{transform:scale(1.3);opacity:.8}100%{transform:scale(1);opacity:.4}}
+        @keyframes zoom{from{transform:scale(1)}to{transform:scale(1.12)}}
+        @keyframes fadeUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+        .hidden{opacity:0;transform:translateY(40px);transition:all 1s ease}
+        .show{opacity:1;transform:translateY(0)}
+        .animate-card{opacity:0;transform:translateY(50px);transition:all .8s ease}
+        .animate-card.visible{opacity:1;transform:translateY(0)}
+        @media(max-width:900px){.logo span:last-child{font-size:14px}nav{display:none}.mobile-menu-btn{display:flex}.hero h1{font-size:42px}.hero p{font-size:17px}.hero-box{padding:35px 20px}.section h2{font-size:32px}.date{width:90px;height:90px;font-size:14px}.event-text{width:auto;flex:1}}
+        @media(max-width:600px){.hero h1{font-size:34px}.hero p{font-size:15px}.btn{padding:14px 35px}.gallery{grid-template-columns:1fr}.gallery .card{height:220px}.timeline-box::before{right:25px;transform:none}.event{justify-content:flex-start;gap:15px}.date{width:70px;height:70px;font-size:12px}.event-text h3{font-size:18px}.program-grid,.feature-grid,.library-grid,.audio-grid,.stats{grid-template-columns:1fr}.app-info div{width:100%}.contact-info{flex-direction:column;align-items:center}.footer-container{text-align:center}.footer-bottom{justify-content:center}#scrollTop{width:45px;height:45px;font-size:22px;bottom:20px;right:20px}.mobile-menu{width:100%;padding:80px 20px 20px}}
+        @media(max-width:400px){.hero h1{font-size:28px}.section p{font-size:15px}.hero-box{padding:25px 15px}}
+    </style>
+</head>
+<body>
+
+<!-- ====== لودر ====== -->
+<div class="loader" id="loader">
+    <div class="loader-logo">🕊️</div>
+</div>
+
+<!-- ====== هدر ====== -->
+<header id="header">
+    <div class="nav">
+        <div class="logo">
+            <span>🕊️</span>
+            <span>مزار شهدای گمنام</span>
+        </div>
+        <nav id="mainNav">
+            <a href="#home">خانه</a>
+            <a href="#about">معرفی</a>
+            <a href="#gallery">گالری</a>
+            <a href="#programs">برنامه‌ها</a>
+            <a href="#contact">ارتباط</a>
+        </nav>
+        <div class="mobile-menu-btn" id="menuBtn">☰</div>
+    </div>
+</header>
+
+<!-- ====== منوی موبایل ====== -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#home">خانه</a>
+    <a href="#about">معرفی</a>
+    <a href="#gallery">گالری</a>
+    <a href="#programs">برنامه‌ها</a>
+    <a href="#contact">ارتباط</a>
+</div>
+
+<!-- ====== محتوای اصلی ====== -->
+<main>
+
+<!-- صفحه اصلی -->
+<section class="hero" id="home">
+    <div class="hero-box">
+        <div class="light"></div>
+        <h1>مزار شهدای گمنام <span>گاوازنگ زنجان</span></h1>
+        <p>یادمان عاشقان بی‌نام و نشان<br>محلی برای زیارت، آرامش و زنده نگه داشتن یاد شهدا</p>
+        <div class="hero-buttons">
+            <a class="btn" href="#about">معرفی مزار</a>
+            <a class="btn btn-outline" href="#gallery">مشاهده تصاویر</a>
+        </div>
+    </div>
+</section>
+
+<!-- معرفی -->
+<section id="about" class="section">
+    <h2>درباره مزار</h2>
+    <p>این یادمان، محل آرامش شهدای گمنامی است که نامشان بر زبان‌ها نیست اما یادشان در دل‌ها ماندگار است.</p>
+    <div class="gold-line"></div>
+    <p style="margin-top:20px;">مزار شهدای گمنام گاوازنگ زنجان، محلی برای زیارت، آرامش روحی و برگزاری برنامه‌های فرهنگی و معنوی است.</p>
+</section>
+
+<!-- گالری -->
+<section id="gallery" class="section">
+    <h2>تصاویر یادمان</h2>
+    <div class="gallery">
+        <div class="card"><img src="images/mazar1.jpg" alt="مزار شهدا ۱" onerror="this.parentElement.innerHTML='🕊️';this.parentElement.style.cssText='display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#06251b,#b99532);color:#f5d77a'"></div>
+        <div class="card"><img src="images/mazar2.jpg" alt="مزار شهدا ۲" onerror="this.parentElement.innerHTML='🌹';this.parentElement.style.cssText='display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#06251b,#b99532);color:#f5d77a'"></div>
+        <div class="card"><img src="images/mazar3.jpg" alt="مزار شهدا ۳" onerror="this.parentElement.innerHTML='📿';this.parentElement.style.cssText='display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#06251b,#b99532);color:#f5d77a'"></div>
+    </div>
+</section>
+
+<!-- برنامه‌ها -->
+<section id="programs" class="section programs">
+    <h2>برنامه‌های مزار</h2>
+    <p>فعالیت‌ها و خدمات یادمان شهدای گمنام</p>
+    <div class="program-grid">
+        <div class="program-card"><div class="icon">📖</div><h3>کتابخوانی</h3><p>مطالعه کتاب‌های مذهبی، خاطرات شهدا و مطالب فرهنگی</p></div>
+        <div class="program-card"><div class="icon">🎧</div><h3>نواها و ادعیه</h3><p>دسترسی به صوت‌های معنوی و دعاهای مناسبتی</p></div>
+        <div class="program-card"><div class="icon">📝</div><h3>آزمون‌ها</h3><p>شرکت در آزمون‌های فرهنگی و آموزشی</p></div>
+        <div class="program-card"><div class="icon">🕊️</div><h3>زیارت مجازی</h3><p>همراهی با یادمان شهدا از هر مکان</p></div>
+    </div>
+</section>
+
+<!-- برنامه هفتگی -->
+<section class="timeline">
+    <h2>برنامه‌های هفتگی مزار</h2>
+    <div class="timeline-box">
+        <div class="event"><div class="date">پنجشنبه</div><div class="event-text"><h3>زیارت و قرائت دعا</h3><p>برگزاری مراسم معنوی در جوار شهدا</p></div></div>
+        <div class="event"><div class="date">جمعه</div><div class="event-text"><h3>مراسم فرهنگی</h3><p>برنامه‌های مناسبتی و یادواره‌ها</p></div></div>
+        <div class="event"><div class="date">مناسبت‌ها</div><div class="event-text"><h3>ویژه برنامه‌ها</h3><p>برگزاری مراسم‌های مذهبی و انقلابی</p></div></div>
+    </div>
+</section>
+
+<!-- امکانات -->
+<section class="features">
+    <h2>امکانات برنامه</h2>
+    <p>همراه شما در مسیر فرهنگی و معنوی</p>
+    <div class="feature-grid">
+        <div class="feature-item"><div class="feature-icon">🌹</div><h3>زندگی‌نامه شهدا</h3><p>آشنایی با خاطرات و وصیت‌نامه‌های شهدا</p></div>
+        <div class="feature-item"><div class="feature-icon">📿</div><h3>ادعیه و زیارت</h3><p>دسترسی آسان به دعاها و اعمال مناسبتی</p></div>
+        <div class="feature-item"><div class="feature-icon">🎬</div><h3>محتوای تصویری</h3><p>تصاویر، کلیپ‌ها و گزارش‌های مزار</p></div>
+        <div class="feature-item"><div class="feature-icon">🔔</div><h3>اعلان برنامه‌ها</h3><p>اطلاع از مراسم‌ها و مناسبت‌های جدید</p></div>
+    </div>
+</section>
+
+
+<!-- دانلود -->
+<section class="download-app">
+    <div class="download-container">
+        <div class="app-logo">🕊️</div>
+        <h2>اپلیکیشن مزار شهدای گمنام</h2>
+        <p>همراه همیشگی شما برای زیارت مجازی، مطالعه، دعا، برنامه‌ها و محتوای فرهنگی</p>
+        <div class="app-info">
+            <div><strong>نسخه</strong><span>1.0.0</span></div>
+            <div><strong>حجم</strong><span>به زودی</span></div>
+            <div><strong>سیستم عامل</strong><span>Android</span></div>
+        </div>
+        <button class="apk-button" id="downloadBtn">📱 دریافت فایل APK</button>
+    </div>
+</section>
+
+<!-- آمار -->
+<section class="stats">
+    <div class="stat-box"><h3>۱۰۰+</h3><p>محتوای فرهنگی</p></div>
+    <div class="stat-box"><h3>۵۰+</h3><p>دعای صوتی</p></div>
+    <div class="stat-box"><h3>۲۰+</h3><p>برنامه مناسبتی</p></div>
+    <div class="stat-box"><h3>۲۴/۷</h3><p>همراهی آنلاین</p></div>
+</section>
+
+<!-- کتابخانه -->
+<section class="library">
+    <h2>کتابخانه دیجیتال</h2>
+    <p>مطالعه آثار فرهنگی و مذهبی</p>
+    <div class="library-grid">
+        <div class="book-card"><div class="book-icon">📖</div><h3>کتاب‌های شهدا</h3><p>خاطرات، وصیت‌نامه‌ها و زندگینامه شهدا</p><a href="#" class="book-link">مطالعه</a></div>
+        <div class="book-card"><div class="book-icon">📜</div><h3>وصیت‌نامه‌ها</h3><p>متن وصیت‌نامه و سخنان ماندگار شهدا</p><a href="#" class="book-link">مشاهده</a></div>
+        <div class="book-card"><div class="book-icon">🎙️</div><h3>صوت و نوا</h3><p>دعاها، مداحی‌ها و فایل‌های معنوی</p><a href="#" class="book-link">پخش</a></div>
+    </div>
+</section>
+
+<!-- نواها -->
+<section class="audio-section">
+    <h2>نواها و ادعیه</h2>
+    <p>گوش دادن به فایل‌های صوتی معنوی</p>
+    <div class="audio-grid">
+        <div class="audio-card"><div class="audio-icon">🎧</div><h3>دعای توسل</h3><audio controls><source src="audio/tavasol.mp3" type="audio/mpeg">مرورگر شما پشتیبانی نمی‌کند</audio></div>
+        <div class="audio-card"><div class="audio-icon">🎙️</div><h3>زیارت عاشورا</h3><audio controls><source src="audio/ashora.mp3" type="audio/mpeg">مرورگر شما پشتیبانی نمی‌کند</audio></div>
+        <div class="audio-card"><div class="audio-icon">🌹</div><h3>مداحی شهدا</h3><audio controls><source src="audio/madah.mp3" type="audio/mpeg">مرورگر شما پشتیبانی نمی‌کند</audio></div>
+    </div>
+</section>
+
+<!-- دلنوشته -->
+<section class="letter-section">
+    <h2>دلنوشته برای شهدا</h2>
+    <div class="letter-box">
+        <textarea id="letterText" placeholder="دلنوشته خود را بنویسید..."></textarea>
+        <button id="sendLetter">ارسال دلنوشته</button>
+        <div id="letterStatus" class="letter-status"></div>
+    </div>
+</section>
+
+<!-- ارتباط -->
+<section id="contact" class="contact">
+    <h2>ارتباط با ما</h2>
+    <p>برای دریافت اخبار، برنامه‌ها و اطلاعیه‌های مزار شهدای گمنام همراه باشید.</p>
+    <div class="contact-info">
+        <div>📍 گاوازنگ زنجان</div>
+        <div>📞 ۰۲۴-۳۳۴۴۵۶۷۸</div>
+        <div>📧 info@shohada-gavazang.ir</div>
+    </div>
+    <a href="#" class="contact-btn">ارتباط با مجموعه</a>
+</section>
+
+</main>
+
+
+<!-- ====== فوتر ====== -->
+<footer>
+    <div class="footer-container">
+        <div class="footer-logo">
+            <div class="footer-icon">🕊️</div>
+            <h2>مزار شهدای گمنام</h2>
+            <p>یاد شهدا، راه روشن آینده</p>
+        </div>
+        <div class="footer-links">
+            <h3>دسترسی سریع</h3>
+            <a href="#home">خانه</a>
+            <a href="#about">معرفی</a>
+            <a href="#gallery">گالری</a>
+            <a href="#programs">برنامه‌ها</a>
+        </div>
+        <div class="footer-contact">
+            <h3>ارتباط</h3>
+            <p>📍 گاوازنگ زنجان</p>
+            <p>📞 تماس با مجموعه</p>
+            <p>📧 ایمیل مجموعه</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>تمامی حقوق این سایت محفوظ است © ۱۴۰۵</p>
+        <p>🌹 ساخته شده با عشق به شهدا</p>
+    </div>
+</footer>
+
+<!-- ====== دکمه بازگشت به بالا ====== -->
+<button id="scrollTop">↑</button>
+
+<!-- ====== اسکریپت ====== -->
+<script>
+// ====== منتظر بارگذاری کامل ======
+document.addEventListener('DOMContentLoaded', function() {
+
+    // لودر
+    window.addEventListener('load', function() {
+        var loader = document.getElementById('loader');
+        if (loader) {
+            setTimeout(function() { loader.classList.add('hide'); }, 1500);
+        }
+    });
+
+    // منوی موبایل
+    var menuBtn = document.getElementById('menuBtn');
+    var mobileMenu = document.getElementById('mobileMenu');
+    if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            mobileMenu.classList.toggle('active');
+        });
+        mobileMenu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                mobileMenu.classList.remove('active');
+            });
+        });
+        document.addEventListener('click', function(e) {
+            if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
+    }
+
+    // اسکرول نرم
+    document.querySelectorAll('a[href^="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            var targetId = link.getAttribute('href');
+            if (targetId === '#') return;
+            var target = document.querySelector(targetId);
+            if (target) {
+                e.preventDefault();
+                var headerHeight = document.querySelector('header').offsetHeight;
+                var targetPosition = target.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+            }
+        });
+    });
+
+    // تغییر هدر
+    var header = document.getElementById('header');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 100) {
+            header.classList.add('scrolled');
+        } else {
+            header.classList.remove('scrolled');
+        }
+    });
+
+    // دکمه بازگشت
+    var scrollBtn = document.getElementById('scrollTop');
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 400) {
+            scrollBtn.classList.add('show');
+        } else {
+            scrollBtn.classList.remove('show');
+        }
+    });
+    scrollBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // انیمیشن بخش‌ها
+    var sections = document.querySelectorAll('.section, .programs, .features, .timeline, .download-app, .library, .audio-section, .letter-section, .contact, .stats');
+    var sectionObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.15 });
+    sections.forEach(function(section) {
+        section.classList.add('hidden');
+        sectionObserver.observe(section);
+    });
+
+    // انیمیشن کارت‌ها
+    var cards = document.querySelectorAll('.program-card, .feature-item, .book-card, .audio-card, .stat-box');
+    var cardObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.2 });
+    cards.forEach(function(card) {
+        card.classList.add('animate-card');
+        cardObserver.observe(card);
+    });
+    
+        // شمارنده آمار
+    var counters = document.querySelectorAll('.stat-box h3');
+    var countersStarted = false;
+    var startCounter = function(counter) {
+        var text = counter.innerText;
+        var target = parseInt(text.replace(/[^0-9]/g, ''));
+        if (isNaN(target)) return;
+        var count = 0;
+        var speed = Math.max(1, Math.floor(target / 80));
+        var update = function() {
+            count += speed;
+            if (count < target) {
+                counter.innerText = Math.floor(count) + '+';
+                requestAnimationFrame(update);
+            } else {
+                counter.innerText = target + '+';
+            }
+        };
+        update();
+    };
+    var counterObserver = new IntersectionObserver(function(entries) {
+        if (!countersStarted) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    countersStarted = true;
+                    counters.forEach(function(counter) { startCounter(counter); });
+                    counterObserver.disconnect();
+                }
+            });
+        }
+    }, { threshold: 0.5 });
+    var statsSection = document.querySelector('.stats');
+    if (statsSection) { counterObserver.observe(statsSection); }
+
+    // دکمه دانلود
+    var downloadBtn = document.getElementById('downloadBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function() {
+            alert('لینک دانلود برنامه به زودی فعال می‌شود');
+        });
+    }
+
+    // دلنوشته
+    var sendBtn = document.getElementById('sendLetter');
+    var letterText = document.getElementById('letterText');
+    var letterStatus = document.getElementById('letterStatus');
+    if (sendBtn && letterText) {
+        sendBtn.addEventListener('click', function() {
+            var text = letterText.value.trim();
+            if (text === '') {
+                letterStatus.textContent = '⚠️ لطفاً متن دلنوشته را وارد کنید';
+                letterStatus.style.color = '#ff6b6b';
+                return;
+            }
+            var letters = JSON.parse(localStorage.getItem('shohada_letters')) || [];
+            letters.push({ text: text, date: new Date().toLocaleDateString('fa-IR') });
+            localStorage.setItem('shohada_letters', JSON.stringify(letters));
+            letterStatus.textContent = '✅ دلنوشته شما با موفقیت ثبت شد';
+            letterStatus.style.color = '#4caf50';
+            letterText.value = '';
+            setTimeout(function() { letterStatus.textContent = ''; }, 5000);
+        });
+    }
+
+    // جلوگیری از خطای تصاویر
+    document.querySelectorAll('img').forEach(function(img) {
+        img.addEventListener('error', function() {
+            this.parentElement.innerHTML = '🕊️';
+            this.parentElement.style.cssText = 'display:flex;align-items:center;justify-content:center;font-size:60px;background:linear-gradient(135deg,#06251b,#b99532);color:#f5d77a';
+        });
+    });
+
+    // پیام روز
+    var messages = ['یاد شهدا چراغ راه آینده است 🕊️', 'راه شهدا، مسیر ایثار و خدمت است 🌹', 'مزار شهدا محل آرامش دل‌هاست', 'با یاد شهدا قدم‌های خود را استوار کنیم', 'فرهنگ ایثار همیشه زنده خواهد ماند'];
+    var msgDiv = document.createElement('div');
+    msgDiv.style.cssText = 'max-width:1200px;margin:20px auto 0;text-align:center;padding:15px;background:rgba(245,215,122,.1);border-radius:15px;border:1px solid rgba(245,215,122,.2);font-size:18px;color:#f5d77a';
+    var today = new Date().getDate();
+    msgDiv.textContent = '✨ ' + messages[today % messages.length];
+    var heroSection = document.querySelector('.hero');
+    if (heroSection) { heroSection.parentNode.insertBefore(msgDiv, heroSection); }
+
+    // لینک‌های خالی
+    document.querySelectorAll('a[href="#"]').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            if (!link.classList.contains('book-link') && !link.classList.contains('contact-btn')) {
+                e.preventDefault();
+            }
+        });
+    });
+
+    console.log('✅ مزار شهدای گمنام گاوازنگ - بارگذاری کامل شد');
+});
+</script>
+
+</body>
+</html>
