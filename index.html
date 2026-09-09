@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مزار شهدای گمنام</title>
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma,Arial;
+}
+
+
+html{
+scroll-behavior:smooth;
+}
+
+
+body{
+
+background:#050505;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+
+/* پس زمینه */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at center,
+rgba(212,170,70,.18),
+transparent 35%),
+
+linear-gradient(
+180deg,
+#080808,
+#000
+);
+
+z-index:-2;
+
+}
+
+
+
+/* ذرات نور */
+
+.particles span{
+
+position:fixed;
+
+width:5px;
+
+height:5px;
+
+background:#e8c36a;
+
+border-radius:50%;
+
+opacity:.5;
+
+animation:
+move 12s infinite linear;
+
+}
+
+
+
+@keyframes move{
+
+from{
+
+transform:
+translateY(100vh);
+
+}
+
+
+to{
+
+transform:
+translateY(-20vh);
+
+}
+
+}
+
+
+
+/* صفحه اول */
+
+
+.hero{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+perspective:1200px;
+
+padding:20px;
+
+}
+
+
+
+.hero-content{
+
+background:
+
+rgba(255,255,255,.06);
+
+
+border:
+
+1px solid rgba(232,195,106,.25);
+
+
+padding:50px;
+
+
+border-radius:40px;
+
+
+backdrop-filter:blur(15px);
+
+
+box-shadow:
+
+0 40px 100px #000;
+
+
+animation:
+
+entrance 2s;
+
+
+}
+
+
+
+@keyframes entrance{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(100px)
+
+rotateX(30deg);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+
+.hero h1{
+
+
+font-size:55px;
+
+
+color:#e8c36a;
+
+
+text-shadow:
+
+0 0 30px rgba(232,195,106,.5);
+
+
+}
+
+
+
+.hero p{
+
+
+font-size:25px;
+
+margin-top:20px;
+
+color:#ddd;
+
+
+}
+
+
+
+.btn{
+
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 45px;
+
+border-radius:50px;
+
+background:
+
+linear-gradient(
+145deg,
+#e8c36a,
+#8f6b18
+);
+
+
+color:#111;
+
+text-decoration:none;
+
+font-weight:bold;
+
+
+box-shadow:
+
+0 15px 40px #000;
+
+
+transition:.4s;
+
+
+}
+
+
+
+.btn:hover{
+
+
+transform:
+
+translateY(-10px)
+scale(1.05);
+
+
+}
+
+
+
+
+/* بخش معرفی */
+
+
+.section{
+
+padding:100px 30px;
+
+}
+
+
+
+.title{
+
+text-align:center;
+
+font-size:40px;
+
+color:#e8c36a;
+
+margin-bottom:50px;
+
+}
+
+
+
+
+.grid{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(250px,1fr));
+
+
+gap:35px;
+
+
+}
+
+
+
+.box{
+
+
+background:
+
+linear-gradient(
+145deg,
+#191919,
+#050505
+);
+
+
+border-radius:30px;
+
+
+padding:35px;
+
+
+text-align:center;
+
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+
+
+transition:.5s;
+
+
+box-shadow:
+
+0 25px 60px #000;
+
+
+}
+
+
+
+.box:hover{
+
+
+transform:
+
+translateY(-20px)
+
+rotateY(8deg);
+
+
+}
+
+
+
+.box h3{
+
+
+color:#e8c36a;
+
+font-size:25px;
+
+margin:20px;
+
+
+}
+
+
+
+.icon{
+
+font-size:60px;
+
+}
+
+
+
+.reveal{
+
+opacity:0;
+
+transform:
+
+translateY(80px);
+
+
+transition:1s;
+
+}
+
+
+.reveal.show{
+
+
+opacity:1;
+
+transform:none;
+
+
+}
+
+
+
+footer{
+
+padding:50px;
+
+text-align:center;
+
+color:#777;
+
+}
+
+/* منوی شناور سه بعدی */
+
+.menu3d{
+
+position:fixed;
+
+top:30px;
+
+right:50%;
+
+transform:translateX(50%);
+
+display:flex;
+
+gap:15px;
+
+z-index:999;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+padding:15px 25px;
+
+border-radius:50px;
+
+
+backdrop-filter:blur(15px);
+
+
+border:
+
+1px solid rgba(232,195,106,.3);
+
+
+box-shadow:
+
+0 20px 50px #000;
+
+}
+
+
+
+.menu3d a{
+
+color:white;
+
+text-decoration:none;
+
+padding:10px 15px;
+
+border-radius:20px;
+
+transition:.4s;
+
+font-size:14px;
+
+}
+
+
+
+.menu3d a:hover{
+
+background:#e8c36a;
+
+color:#111;
+
+transform:
+
+translateY(-5px);
+
+}
+
+
+
+
+/* کارت معرفی */
+
+
+.intro-card{
+
+margin:50px auto;
+
+max-width:900px;
+
+
+padding:40px;
+
+
+background:
+
+linear-gradient(
+145deg,
+#222,
+#080808
+);
+
+
+border-radius:35px;
+
+
+box-shadow:
+
+0 30px 80px #000;
+
+
+border:
+
+1px solid rgba(232,195,106,.2);
+
+
+}
+
+
+
+.intro-card h2{
+
+color:#e8c36a;
+
+font-size:35px;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+/* تصویر یادمان */
+
+
+.memory{
+
+height:450px;
+
+margin:50px 20px;
+
+
+border-radius:40px;
+
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.4),
+rgba(0,0,0,.8)
+),
+
+url("your-image.jpg");
+
+
+background-size:cover;
+
+background-position:center;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+font-size:40px;
+
+color:#e8c36a;
+
+
+box-shadow:
+
+0 40px 100px #000;
+
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<nav class="menu3d">
+
+<a href="#">خانه</a>
+
+<a href="#sections">شهدا</a>
+
+<a href="#">کتابخانه</a>
+
+<a href="#">مداحی</a>
+
+<a href="#">نگارخانه</a>
+
+<a href="#">برنامه‌ها</a>
+
+</nav>
+
+<div class="particles">
+
+<span style="left:10%;animation-delay:0s"></span>
+
+<span style="left:30%;animation-delay:3s"></span>
+
+<span style="left:60%;animation-delay:6s"></span>
+
+<span style="left:80%;animation-delay:2s"></span>
+
+</div>
+
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<h1>
+
+🕊️ مزار شهدای گمنام
+
+</h1>
+
+
+<p>
+
+یادمان دیجیتال، روایت ایثار و فداکاری
+
+</p>
+
+
+
+<a href="#sections" class="btn">
+
+ورود به یادمان
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+<section id="sections" class="section reveal">
+
+
+<h2 class="title">
+
+بخش های یادمان
+
+</h2>
+
+
+
+<div class="grid">
+
+
+<div class="box">
+
+<div class="icon">
+🕊️
+</div>
+
+<h3>
+شهدای گمنام
+</h3>
+
+<p>
+روایت زندگی و خاطرات شهدا
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+📚
+</div>
+
+<h3>
+کتابخانه
+</h3>
+
+<p>
+کتاب‌ها و منابع فرهنگی
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+🎙️
+</div>
+
+<h3>
+مداحی و صوت
+</h3>
+
+<p>
+آرشیو صوتی مراسم‌ها
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+🖼️
+</div>
+
+<h3>
+نگارخانه
+</h3>
+
+<p>
+تصاویر و خاطرات
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+<footer>
+
+یا شهید
+
+</footer>
+
+
+
+
+<script>
+
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+
+function reveal(){
+
+
+reveals.forEach(el=>{
+
+
+let top =
+el.getBoundingClientRect().top;
+
+
+if(top <
+window.innerHeight-120){
+
+
+el.classList.add("show");
+
+
+}
+
+
+});
+
+
+}
+
+
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+
+reveal();
+
+
+</script>
+
+
+
+</body>
+
+</html>
