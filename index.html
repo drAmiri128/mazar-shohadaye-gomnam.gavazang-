@@ -1,0 +1,2302 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>مزار شهدای گمنام</title>
+
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:tahoma,Arial;
+}
+
+
+html{
+scroll-behavior:smooth;
+}
+
+
+body{
+
+background:#050505;
+
+color:white;
+
+overflow-x:hidden;
+
+}
+
+
+/* پس زمینه */
+
+body::before{
+
+content:"";
+
+position:fixed;
+
+inset:0;
+
+background:
+
+radial-gradient(circle at center,
+rgba(212,170,70,.18),
+transparent 35%),
+
+linear-gradient(
+180deg,
+#080808,
+#000
+);
+
+z-index:-2;
+
+}
+
+
+
+/* ذرات نور */
+
+.particles span{
+
+position:fixed;
+
+width:5px;
+
+height:5px;
+
+background:#e8c36a;
+
+border-radius:50%;
+
+opacity:.5;
+
+animation:
+move 12s infinite linear;
+
+}
+
+
+
+@keyframes move{
+
+from{
+
+transform:
+translateY(100vh);
+
+}
+
+
+to{
+
+transform:
+translateY(-20vh);
+
+}
+
+}
+
+
+
+/* صفحه اول */
+
+
+.hero{
+
+height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+perspective:1200px;
+
+padding:20px;
+
+}
+
+
+
+.hero-content{
+
+background:
+
+rgba(255,255,255,.06);
+
+
+border:
+
+1px solid rgba(232,195,106,.25);
+
+
+padding:50px;
+
+
+border-radius:40px;
+
+
+backdrop-filter:blur(15px);
+
+
+box-shadow:
+
+0 40px 100px #000;
+
+
+animation:
+
+entrance 2s;
+
+
+}
+
+
+
+@keyframes entrance{
+
+from{
+
+opacity:0;
+
+transform:
+
+translateY(100px)
+
+rotateX(30deg);
+
+}
+
+to{
+
+opacity:1;
+
+transform:none;
+
+}
+
+}
+
+
+
+.hero h1{
+
+
+font-size:55px;
+
+
+color:#e8c36a;
+
+
+text-shadow:
+
+0 0 30px rgba(232,195,106,.5);
+
+
+}
+
+
+
+.hero p{
+
+
+font-size:25px;
+
+margin-top:20px;
+
+color:#ddd;
+
+
+}
+
+
+
+.btn{
+
+
+display:inline-block;
+
+margin-top:40px;
+
+padding:18px 45px;
+
+border-radius:50px;
+
+background:
+
+linear-gradient(
+145deg,
+#e8c36a,
+#8f6b18
+);
+
+
+color:#111;
+
+text-decoration:none;
+
+font-weight:bold;
+
+
+box-shadow:
+
+0 15px 40px #000;
+
+
+transition:.4s;
+
+
+}
+
+
+
+.btn:hover{
+
+
+transform:
+
+translateY(-10px)
+scale(1.05);
+
+
+}
+
+
+
+
+/* بخش معرفی */
+
+
+.section{
+
+padding:100px 30px;
+
+}
+
+
+
+.title{
+
+text-align:center;
+
+font-size:40px;
+
+color:#e8c36a;
+
+margin-bottom:50px;
+
+}
+
+
+
+
+.grid{
+
+
+display:grid;
+
+
+grid-template-columns:
+
+repeat(auto-fit,minmax(250px,1fr));
+
+
+gap:35px;
+
+
+}
+
+
+
+.box{
+
+
+background:
+
+linear-gradient(
+145deg,
+#191919,
+#050505
+);
+
+
+border-radius:30px;
+
+
+padding:35px;
+
+
+text-align:center;
+
+
+border:
+
+1px solid rgba(255,255,255,.08);
+
+
+
+transition:.5s;
+
+
+box-shadow:
+
+0 25px 60px #000;
+
+
+}
+
+
+
+.box:hover{
+
+
+transform:
+
+translateY(-20px)
+
+rotateY(8deg);
+
+
+}
+
+
+
+.box h3{
+
+
+color:#e8c36a;
+
+font-size:25px;
+
+margin:20px;
+
+
+}
+
+
+
+.icon{
+
+font-size:60px;
+
+}
+
+
+
+.reveal{
+
+opacity:0;
+
+transform:
+
+translateY(80px);
+
+
+transition:1s;
+
+}
+
+
+.reveal.show{
+
+
+opacity:1;
+
+transform:none;
+
+
+}
+
+
+
+footer{
+
+padding:50px;
+
+text-align:center;
+
+color:#777;
+
+}
+
+/* منوی شناور سه بعدی */
+
+.menu3d{
+
+position:fixed;
+
+top:30px;
+
+right:50%;
+
+transform:translateX(50%);
+
+display:flex;
+
+gap:15px;
+
+z-index:999;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+padding:15px 25px;
+
+border-radius:50px;
+
+
+backdrop-filter:blur(15px);
+
+
+border:
+
+1px solid rgba(232,195,106,.3);
+
+
+box-shadow:
+
+0 20px 50px #000;
+
+}
+
+
+
+.menu3d a{
+
+color:white;
+
+text-decoration:none;
+
+padding:10px 15px;
+
+border-radius:20px;
+
+transition:.4s;
+
+font-size:14px;
+
+}
+
+
+
+.menu3d a:hover{
+
+background:#e8c36a;
+
+color:#111;
+
+transform:
+
+translateY(-5px);
+
+}
+
+
+
+
+/* کارت معرفی */
+
+
+.intro-card{
+
+margin:50px auto;
+
+max-width:900px;
+
+
+padding:40px;
+
+
+background:
+
+linear-gradient(
+145deg,
+#222,
+#080808
+);
+
+
+border-radius:35px;
+
+
+box-shadow:
+
+0 30px 80px #000;
+
+
+border:
+
+1px solid rgba(232,195,106,.2);
+
+
+}
+
+
+
+.intro-card h2{
+
+color:#e8c36a;
+
+font-size:35px;
+
+margin-bottom:20px;
+
+}
+
+
+
+
+/* تصویر یادمان */
+
+
+.memory{
+
+height:450px;
+
+margin:50px 20px;
+
+
+border-radius:40px;
+
+
+background:
+
+linear-gradient(
+rgba(0,0,0,.4),
+rgba(0,0,0,.8)
+),
+
+url("your-image.jpg");
+
+
+background-size:cover;
+
+background-position:center;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+font-size:40px;
+
+color:#e8c36a;
+
+
+box-shadow:
+
+0 40px 100px #000;
+
+
+}
+/* کارت های حرفه ای */
+
+.box{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+
+.box::before{
+
+content:"";
+
+position:absolute;
+
+inset:-50%;
+
+background:
+
+radial-gradient(
+circle,
+rgba(232,195,106,.25),
+transparent 40%
+);
+
+
+transform:translateY(100%);
+
+transition:.6s;
+
+}
+
+
+.box:hover::before{
+
+transform:translateY(0);
+
+}
+
+
+.box:hover .icon{
+
+transform:
+
+scale(1.2)
+
+rotateY(20deg);
+
+}
+
+
+.icon{
+
+transition:.5s;
+
+display:inline-block;
+
+}
+
+
+
+
+/* افکت سه بعدی */
+
+.box{
+
+transform-style:preserve-3d;
+
+}
+
+
+.box h3,
+.box p,
+.box .icon{
+
+position:relative;
+
+z-index:2;
+
+}
+
+
+
+/* بخش ویژه */
+
+.feature-card{
+
+
+margin-top:60px;
+
+padding:50px;
+
+border-radius:40px;
+
+
+background:
+
+linear-gradient(
+145deg,
+#252525,
+#050505
+);
+
+
+box-shadow:
+
+0 40px 100px #000;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-around;
+
+
+gap:30px;
+
+
+}
+
+
+
+.feature-icon{
+
+font-size:100px;
+
+animation:
+
+pulse 3s infinite;
+
+}
+
+
+
+@keyframes pulse{
+
+
+50%{
+
+transform:
+
+scale(1.1);
+
+}
+
+
+}
+
+
+@media(max-width:700px){
+
+
+.feature-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+}
+.library-box{
+
+margin-top:50px;
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(220px,1fr));
+
+gap:30px;
+
+}
+
+
+.book{
+
+background:
+linear-gradient(145deg,#252525,#090909);
+
+padding:30px;
+
+border-radius:30px;
+
+text-align:center;
+
+box-shadow:
+0 25px 60px #000;
+
+transition:.5s;
+
+}
+
+
+
+.book:hover{
+
+transform:
+translateY(-15px)
+rotateY(8deg);
+
+}
+
+
+
+.book-cover{
+
+height:180px;
+
+border-radius:15px;
+
+background:
+
+linear-gradient(
+145deg,
+#b88a35,
+#332000
+);
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:70px;
+
+margin-bottom:20px;
+
+}
+
+
+.book h3{
+
+color:#e8c36a;
+
+}
+.audio-box{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(260px,1fr));
+
+gap:30px;
+
+}
+
+
+.audio-card{
+
+background:
+linear-gradient(145deg,#202020,#050505);
+
+padding:35px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 30px 70px #000;
+
+transition:.5s;
+
+}
+
+
+
+.audio-card:hover{
+
+transform:
+translateY(-15px);
+
+}
+
+
+
+.audio-icon{
+
+font-size:70px;
+
+margin-bottom:20px;
+
+}
+
+
+
+.play-btn{
+
+display:inline-block;
+
+margin-top:20px;
+
+padding:12px 30px;
+
+border-radius:50px;
+
+background:#e8c36a;
+
+color:#111;
+
+text-decoration:none;
+
+font-weight:bold;
+
+}
+.gallery-box{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(250px,1fr));
+
+gap:25px;
+
+}
+
+
+
+.gallery-item{
+
+height:250px;
+
+border-radius:30px;
+
+overflow:hidden;
+
+position:relative;
+
+box-shadow:
+
+0 30px 70px #000;
+
+cursor:pointer;
+
+transition:.5s;
+
+}
+
+
+
+.gallery-item:hover{
+
+transform:
+
+translateY(-10px);
+
+}
+
+
+
+.gallery-item img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+transition:.6s;
+
+}
+
+
+
+.gallery-item:hover img{
+
+transform:scale(1.15);
+
+}
+
+
+
+.gallery-title{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+padding:20px;
+
+background:
+
+linear-gradient(
+transparent,
+rgba(0,0,0,.9)
+);
+
+color:#e8c36a;
+
+font-size:20px;
+
+}
+/* کنترل مرکزی */
+
+.control-btn{
+
+position:fixed;
+
+bottom:30px;
+
+left:30px;
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+background:#e8c36a;
+
+color:#111;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:30px;
+
+cursor:pointer;
+
+z-index:9999;
+
+box-shadow:
+
+0 20px 50px #000;
+
+}
+
+
+
+.control-panel{
+
+position:fixed;
+
+inset:0;
+
+background:
+
+rgba(0,0,0,.85);
+
+display:none;
+
+align-items:center;
+
+justify-content:center;
+
+z-index:9998;
+
+}
+
+
+
+.panel-box{
+
+width:90%;
+
+max-width:450px;
+
+background:
+
+linear-gradient(
+145deg,
+#252525,
+#050505
+);
+
+padding:40px;
+
+border-radius:35px;
+
+text-align:center;
+
+box-shadow:
+
+0 40px 100px #000;
+
+}
+
+
+
+.panel-box h2{
+
+color:#e8c36a;
+
+}
+
+
+
+.panel-box input{
+
+width:100%;
+
+padding:15px;
+
+margin:20px 0;
+
+border-radius:20px;
+
+border:none;
+
+font-size:18px;
+
+}
+
+
+
+.panel-box button{
+
+padding:15px 35px;
+
+border-radius:30px;
+
+border:none;
+
+background:#e8c36a;
+
+font-weight:bold;
+
+cursor:pointer;
+
+}
+
+.admin-buttons{
+
+display:grid;
+
+grid-template-columns:
+repeat(auto-fit,minmax(140px,1fr));
+
+gap:15px;
+
+margin-top:30px;
+
+}
+
+
+.admin-buttons button{
+
+padding:25px 10px;
+
+border-radius:20px;
+
+border:1px solid rgba(232,195,106,.3);
+
+
+background:
+
+linear-gradient(
+145deg,
+#222,
+#080808
+);
+
+
+color:white;
+
+cursor:pointer;
+
+font-size:16px;
+
+transition:.4s;
+
+}
+
+
+.admin-buttons button:hover{
+
+transform:
+translateY(-8px);
+
+
+background:#e8c36a;
+
+color:#111;
+
+}
+
+</style>
+
+</head>
+
+
+
+<body>
+
+<div class="control-btn" onclick="openControl()">
+
+⚙️
+
+</div>
+
+
+<div class="control-panel" id="controlPanel">
+
+
+<div class="panel-box">
+
+
+<h2>
+مرکز کنترل
+</h2>
+
+
+<input 
+id="adminPass"
+type="password"
+placeholder="رمز عبور">
+
+
+<button onclick="loginControl()">
+
+ورود
+
+</button>
+
+
+<p id="controlMsg"></p>
+
+<div id="adminDashboard" style="display:none;">
+
+
+<h2>
+داشبورد مدیریت
+</h2>
+
+
+<div class="admin-buttons">
+
+
+<button onclick="openManager('gallery')">
+🖼️ نگارخانه
+</button>
+
+
+<button onclick="openManager('library')">
+📚 کتابخانه
+</button>
+
+
+<button onclick="openManager('audio')">
+🎙️ مداحی
+</button>
+
+
+<button onclick="openManager('video')">
+🎬 ویدئو
+</button>
+
+
+<button onclick="openManager('documents')">
+📜 اسناد
+</button>
+
+
+<button onclick="openManager('programs')">
+🕌 برنامه‌ها
+</button> 
+</div>
+<div id="managerArea" style="display:none;">
+
+
+<h2 id="managerTitle"></h2>
+
+
+<p id="managerText"></p>
+
+
+<input 
+id="itemTitle"
+placeholder="عنوان">
+
+
+<textarea
+id="itemDescription"
+placeholder="توضیحات"></textarea>
+
+
+<button onclick="saveItem()">
+
+💾 ذخیره
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+<nav class="menu3d">
+
+<a href="#">خانه</a>
+
+<a href="#sections">شهدا</a>
+
+<a href="#">کتابخانه</a>
+
+<a href="#">مداحی</a>
+
+<a href="#">نگارخانه</a>
+
+<a href="#">برنامه‌ها</a>
+
+
+</nav>
+
+<div class="particles">
+
+<span style="left:10%;animation-delay:0s"></span>
+
+<span style="left:30%;animation-delay:3s"></span>
+
+<span style="left:60%;animation-delay:6s"></span>
+
+<span style="left:80%;animation-delay:2s"></span>
+
+</div>
+
+
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+
+<h1>
+
+🕊️ مزار شهدای گمنام
+
+</h1>
+
+
+<p>
+
+یادمان دیجیتال، روایت ایثار و فداکاری
+
+</p>
+
+
+
+<a href="#sections" class="btn">
+
+ورود به یادمان
+
+</a>
+
+
+</div>
+
+
+</section>
+<section class="section reveal">
+
+<div class="intro-card">
+
+<h2>
+مزار شهدای گمنام
+</h2>
+
+<p>
+اینجا روایت‌گر یاد کسانی هستیم که نامشان در زمین گمنام،
+اما یادشان در دل‌ها ماندگار است.
+</p>
+
+</div>
+
+
+<div class="memory">
+
+یادمان شهدا
+
+</div>
+
+
+</section>
+
+
+
+
+<section id="sections" class="section reveal">
+
+
+<h2 class="title">
+
+بخش های یادمان
+
+</h2>
+
+
+
+<div class="grid">
+
+
+<div class="box">
+
+<div class="icon">
+🕊️
+</div>
+
+<h3>
+شهدای گمنام
+</h3>
+
+<p>
+روایت زندگی و خاطرات شهدا
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+📚
+</div>
+
+<h3>
+کتابخانه
+</h3>
+
+<p>
+کتاب‌ها و منابع فرهنگی
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+🎙️
+</div>
+
+<h3>
+مداحی و صوت
+</h3>
+
+<p>
+آرشیو صوتی مراسم‌ها
+</p>
+
+</div>
+
+
+
+<div class="box">
+
+<div class="icon">
+🖼️
+</div>
+
+<h3>
+نگارخانه
+</h3>
+
+<p>
+تصاویر و خاطرات
+</p>
+
+</div>
+
+
+</div>
+<div class="feature-card reveal">
+
+
+<div class="feature-icon">
+
+🕊️
+
+</div>
+
+
+<div>
+
+<h2>
+
+یادمان شهدای گمنام
+
+</h2>
+
+
+<p>
+
+روایت‌ها، تصاویر، کتاب‌ها و خاطرات در یک فضای دیجیتال ماندگار
+
+</p>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+<section class="section reveal">
+
+
+<h2 class="title">
+
+📚 کتابخانه دیجیتال
+
+</h2>
+
+<div id="dynamicLibrary" class="library-box">
+
+</div>
+<div class="library-box">
+
+
+<div class="book">
+
+<div class="book-cover">
+
+📖
+
+</div>
+
+<h3>
+کتاب شهدا
+</h3>
+
+<p>
+روایت‌ها و خاطرات
+</p>
+
+</div>
+
+
+
+<div class="book">
+
+<div class="book-cover">
+
+📜
+
+</div>
+
+<h3>
+وصیت‌نامه‌ها
+</h3>
+
+<p>
+متن‌های ماندگار
+</p>
+
+</div>
+
+
+
+<div class="book">
+
+<div class="book-cover">
+
+🕌
+
+</div>
+
+<h3>
+کتاب‌های فرهنگی
+</h3>
+
+<p>
+منابع یادمان
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+<section class="section reveal">
+
+
+<h2 class="title">
+
+🎙️ آرشیو مداحی
+
+</h2>
+
+
+<div class="audio-box">
+    
+<div id="dynamicAudio">
+
+</div>
+
+
+<div class="audio-card">
+
+<div class="audio-icon">
+
+🎙️
+
+</div>
+
+<h3>
+مداحی محرم
+</h3>
+
+<p>
+نوای ماندگار
+</p>
+
+<a class="play-btn">
+
+▶ پخش
+
+</a>
+
+</div>
+
+
+
+<div class="audio-card">
+
+<div class="audio-icon">
+
+🕌
+
+</div>
+
+<h3>
+دعای زیارت
+</h3>
+
+<p>
+آوای معنوی
+</p>
+
+<a class="play-btn">
+
+▶ پخش
+
+</a>
+
+</div>
+
+
+
+<div class="audio-card">
+
+<div class="audio-icon">
+
+🕊️
+
+</div>
+
+<h3>
+یاد شهدا
+</h3>
+
+<p>
+قطعات یادبود
+</p>
+
+<a class="play-btn">
+
+▶ پخش
+
+</a>
+
+</div>
+
+
+</div>
+
+
+</section>
+<section class="section reveal">
+
+
+<h2 class="title">
+
+🖼️ نگارخانه یادمان
+
+</h2>
+
+
+<div class="gallery-box">
+
+<div id="dynamicGallery">
+
+</div>
+
+
+<div class="gallery-item">
+
+<img src="image1.jpg">
+
+<div class="gallery-title">
+مزار شهدا
+</div>
+
+</div>
+
+
+
+<div class="gallery-item">
+
+<img src="image2.jpg">
+
+<div class="gallery-title">
+لحظه‌های یادمان
+</div>
+
+</div>
+
+
+
+<div class="gallery-item">
+
+<img src="image3.jpg">
+
+<div class="gallery-title">
+یاد و خاطره
+</div>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+<footer>
+
+یا شهید 
+
+</footer>
+
+
+
+
+<script>
+
+
+const reveals =
+document.querySelectorAll(".reveal");
+
+
+function reveal(){
+
+
+reveals.forEach(el=>{
+
+
+let top =
+el.getBoundingClientRect().top;
+
+
+if(top <
+window.innerHeight-120){
+
+
+el.classList.add("show");
+
+
+}
+
+
+});
+
+
+}
+
+
+
+window.addEventListener(
+"scroll",
+reveal
+);
+
+
+reveal();
+
+function openControl(){
+
+document.getElementById("controlPanel")
+.style.display="flex";
+
+}
+
+
+
+function loginControl(){
+
+let pass =
+document.getElementById("adminPass").value;
+
+
+
+if(pass==="1234"){
+
+document.getElementById("controlMsg").innerHTML=
+"ورود موفق شد ✅";
+
+
+}
+
+else{
+
+document.getElementById("controlMsg").innerHTML=
+"رمز اشتباه است ❌";
+
+}
+
+
+}
+
+function openControl(){
+    document.getElementById("controlPanel").style.display = "flex";
+}
+
+function loginControl(){
+
+    const pass = document.getElementById("adminPass").value;
+
+    if(pass === "GOMNAM-ADMIN-1405"){
+
+document.getElementById("controlMsg").innerHTML =
+"";
+
+
+document.getElementById("adminDashboard")
+.style.display="block";
+
+    }else{
+
+        document.getElementById("controlMsg").innerHTML =
+        "رمز عبور اشتباه است ❌";
+
+    }
+}
+function openManager(type){
+
+document.getElementById("adminDashboard")
+.style.display="none";
+
+
+document.getElementById("managerArea")
+.style.display="block";
+
+
+let title="";
+
+let text="";
+
+
+if(type==="gallery"){
+
+title="🖼️ مدیریت نگارخانه";
+
+text="افزودن و مدیریت تصاویر";
+
+}
+
+
+if(type==="library"){
+
+title="📚 مدیریت کتابخانه";
+
+text="افزودن کتاب و منابع";
+
+}
+
+
+if(type==="audio"){
+
+title="🎙️ مدیریت مداحی";
+
+text="افزودن فایل صوتی";
+
+}
+
+
+if(type==="video"){
+
+title="🎬 مدیریت ویدئو";
+
+text="افزودن کلیپ";
+
+}
+
+
+if(type==="documents"){
+
+title="📜 مدیریت اسناد";
+
+text="افزودن وصیت‌نامه و متن‌ها";
+
+}
+
+
+if(type==="programs"){
+
+title="🕌 مدیریت برنامه‌ها";
+
+text="برنامه‌های هفتگی مزار";
+
+}
+
+
+document.getElementById("managerTitle")
+.innerHTML=title;
+
+
+document.getElementById("managerText")
+.innerHTML=text;
+
+
+}
+
+function saveItem(){
+
+let title =
+document.getElementById("itemTitle").value;
+
+let description =
+document.getElementById("itemDescription").value;
+
+let type =
+window.currentManager || "library";
+
+let items =
+JSON.parse(
+localStorage.getItem("gomnamData") || "[]"
+);
+
+items.push({
+
+type:type,
+
+title:title,
+
+description:description,
+
+time:new Date().toLocaleString()
+
+});
+
+localStorage.setItem(
+"gomnamData",
+JSON.stringify(items)
+);
+
+alert("ذخیره شد ✅");
+
+}
+
+
+function openManager(type){
+window.currentManager = type;
+
+    document.getElementById("managerArea")
+    .style.display="block";
+
+
+    let title="";
+    let text="";
+
+
+    if(type==="gallery"){
+
+        title="🖼️ مدیریت نگارخانه";
+        text="اینجا تصاویر جدید اضافه می‌شوند";
+
+    }
+
+
+    if(type==="library"){
+
+        title="📚 مدیریت کتابخانه";
+        text="اینجا کتاب‌های جدید اضافه می‌شوند";
+
+    }
+
+
+    if(type==="audio"){
+
+        title="🎙️ مدیریت مداحی";
+        text="اینجا فایل‌های صوتی اضافه می‌شوند";
+
+    }
+
+
+    if(type==="video"){
+
+        title="🎬 مدیریت ویدئو";
+        text="اینجا ویدئوها مدیریت می‌شوند";
+
+    }
+
+
+    if(type==="documents"){
+
+        title="📜 مدیریت اسناد";
+        text="اینجا متن‌ها و اسناد اضافه می‌شوند";
+
+    }
+
+
+    if(type==="programs"){
+
+        title="🕌 مدیریت برنامه‌ها";
+        text="اینجا برنامه‌های مزار ثبت می‌شوند";
+
+    }
+
+
+    document.getElementById("managerTitle")
+    .innerHTML=title;
+
+
+    document.getElementById("managerText")
+    .innerHTML=text;
+
+}
+function saveItem(){
+
+let title =
+document.getElementById("itemTitle").value;
+
+
+let description =
+document.getElementById("itemDescription").value;
+
+
+
+let items =
+JSON.parse(
+localStorage.getItem("gomnamItems") || "[]"
+);
+
+
+
+items.push({
+
+title:title,
+
+description:description,
+
+time:new Date().toLocaleString()
+
+});
+
+
+
+localStorage.setItem(
+"gomnamItems",
+JSON.stringify(items)
+);
+
+
+
+alert("اطلاعات ذخیره شد ✅");
+
+
+
+document.getElementById("itemTitle").value="";
+
+document.getElementById("itemDescription").value="";
+
+}
+function loadLibrary(){
+
+
+let box =
+document.getElementById("dynamicLibrary");
+
+
+if(!box) return;
+
+
+
+let items =
+JSON.parse(
+localStorage.getItem("gomnamData")
+||
+"[]"
+);
+
+
+
+let books =
+items.filter(item=>item.type==="library");
+
+
+
+box.innerHTML="";
+
+
+
+books.forEach(item=>{
+
+
+box.innerHTML += `
+
+<div class="book">
+
+
+<div class="book-cover">
+
+📖
+
+</div>
+
+
+<h3>
+
+${item.title}
+
+</h3>
+
+
+<p>
+
+${item.description}
+
+</p>
+
+
+</div>
+
+`;
+
+
+
+});
+
+
+}
+
+
+window.addEventListener(
+"load",
+loadLibrary
+);
+
+function loadGallery(){
+
+    let box =
+    document.getElementById("dynamicGallery");
+
+
+    if(!box) return;
+
+
+    let items =
+    JSON.parse(
+        localStorage.getItem("gomnamData") || "[]"
+    );
+
+
+    let photos =
+    items.filter(item => item.type === "gallery");
+
+
+    box.innerHTML = "";
+
+
+    photos.forEach(item => {
+
+
+        box.innerHTML += `
+
+        <div class="gallery-item">
+
+            <div class="gallery-title">
+                ${item.title}
+            </div>
+
+
+            <p>
+                ${item.description}
+            </p>
+
+        </div>
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+window.addEventListener(
+"load",
+loadGallery
+);
+function loadAudio(){
+
+    let box =
+    document.getElementById("dynamicAudio");
+
+
+    if(!box) return;
+
+
+    let items =
+    JSON.parse(
+        localStorage.getItem("gomnamData") || "[]"
+    );
+
+
+    let audios =
+    items.filter(item => item.type === "audio");
+
+
+    box.innerHTML="";
+
+
+    audios.forEach(item=>{
+
+
+        box.innerHTML += `
+
+        <div class="audio-card">
+
+            <div class="audio-icon">
+            🎙️
+            </div>
+
+
+            <h3>
+            ${item.title}
+            </h3>
+
+
+            <p>
+            ${item.description}
+            </p>
+
+
+            <button class="play-btn">
+            ▶ پخش
+            </button>
+
+
+        </div>
+
+        `;
+
+
+    });
+
+
+}
+
+
+
+window.addEventListener(
+"load",
+loadAudio
+);
+
+</script>
+
+
+
+</body>
+
+</html>
